@@ -61,7 +61,7 @@ const CreateQuiz = () => {
                                 </Form.Field>
                                 <Form.Field>
                                     <label>Total Points</label>
-                                    <input name='totalPoints' onChange={changeQuizData} />
+                                    <input name='totalPoints' value={createQuiz.totalPoints} onChange={changeQuizData} />
                                 </Form.Field>
                                 <Form.Group widths='equal'>
                                     <Form.Field fluid>
