@@ -24,7 +24,7 @@ const CreateQuiz = () => {
     const postData = async () => {
 
         try {
-            let result = await fetch('https://webhook.site/7559e1f8-173d-4982-be60-a74560b38667', {
+            let result = await fetch('http://localhost:8081/quiz', {
                 method: 'post',
                 mode: 'no-cors',
                 headers: {
