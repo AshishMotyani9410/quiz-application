@@ -1,0 +1,10 @@
+.left{
+    align-items: left;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.component-margin-left{
+    padding: 5px;
+    margin-left: 5px;
+}
