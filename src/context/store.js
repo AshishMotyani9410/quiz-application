@@ -19,18 +19,34 @@ const GlobalQuestionnStoreProvider = (props) => {
     const addQuestion = (e) => {
         setCreateQuiz({...createQuiz, questions: [
             ...createQuiz.questions,
-            {...e}
+            {...e, choices: []}
         ]})
     }
 
+    
+
     const addChoiceToQuestion = (choices) => {
-        console.log(createQuiz.questions)
-        createQuiz.questions[createQuiz.questions.length - 1].choices = [];
-        createQuiz.questions[createQuiz.questions.length - 1].choices.push(choices);
+        setCreateQuiz({
+            ...createQuiz,
+            questions: [
+                ...createQuiz.questions,
+                createQuiz.questions[createQuiz.questions.length - 1].choices = [...choices],
+            ]
+        })
+
+        setCreateQuiz({
+            ...createQuiz,
+            questions: [[...createQuiz.questions]].pop()
+        })
+        // createQuiz.questions.pop();
+        console.log({_1: createQuiz.questions})
     }
 
     useEffect(() => {
-        console.log(createQuiz.questions)
+        // createQuiz.questions.choices.map(choice => {
+        //     console.log(choice.choice);
+        //     console.log(choice.correctOption);
+        // })
     }, [createQuiz.questions])
 
     return <GlobalQuestionStoreContext.Provider value={{ createQuiz, changeQuizData, addQuestion, addChoiceToQuestion}}>

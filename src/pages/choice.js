@@ -1,20 +1,23 @@
 import './home.css'
 import React, { useContext, useEffect, useState } from 'react';
 import { GlobalQuestionStoreContext } from '../context/store';
-import { Card, Button, Container, Form, Radio, List } from 'semantic-ui-react'
+import { Card, Button, Container, Form, Radio, List, Table, Icon } from 'semantic-ui-react'
 import { useHistory } from 'react-router'
 
 
 const CreateChoice = () => {
     const history = useHistory();
     const { createQuiz, changeQuizData, addChoiceToQuestion, addQuestion } = useContext(GlobalQuestionStoreContext);
-    const [choice, setChoice] = useState();
+    const [choice, setChoice] = useState({
+        correctOption: null
+    });
     const [finalState, setFinalState] = useState([]);
 
 
 
     const handleChange = (e) => {
         setChoice({
+            ...choice,
             [e.target.name]: e.target.value
         })
     }
@@ -53,15 +56,41 @@ const CreateChoice = () => {
                                 </Form.Field>
                                 <Form.Field>
                                     <label>Correct Option</label>
-                                    <input name='correctOption' />
+                                    <input name='correctOption' onChange={handleChange} />
                                 </Form.Field>
+                                <Form.Group>
+                                    <Table color='red'>
+                                        <Table.Header>
+                                            <Table.Row>
+                                                <Table.HeaderCell>Choices</Table.HeaderCell>
+                                                <Table.HeaderCell>Actions</Table.HeaderCell>
+                                            </Table.Row>
+                                        </Table.Header>
+                                        <Table.Body>
+                                                <Table.Row>
+                                                    <Table.Cell>
+                                                        {console.log(choice)}
+                                                    </Table.Cell>
+                                                    <Table.Cell>
+                                                        <Button icon>
+                                                            <Icon name='edit' />
+                                                        </Button>
+                                                        <Button icon>
+                                                            <Icon name='delete' />
+                                                        </Button>
+                                                    </Table.Cell>
+                                                </Table.Row>
+                                        </Table.Body>
+                                    </Table>
 
-                                    <Form.Field>
-                                        <Button floated='right' basic color='red' onClick={handleSubmit}>Add Choice</Button>
-                                        <Button floated='right' basic color='red' onClick={() => {
-                                            history.push("/")
-                                        }}>Add Question</Button>
-                                    </Form.Field>
+                                </Form.Group>
+
+                                <Form.Field>
+                                    <Button floated='right' basic color='red' onClick={handleSubmit}>Add Choice</Button>
+                                    <Button floated='right' basic color='red' onClick={() => {
+                                        history.push("/")
+                                    }}>Add Question</Button>
+                                </Form.Field>
 
                             </Form>
                         </Card.Content>

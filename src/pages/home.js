@@ -83,23 +83,25 @@ const CreateQuiz = () => {
                                             </Table.Row>
                                         </Table.Header>
                                         <Table.Body>
-                                            <Table.Row>
+                                            {createQuiz.questions.map((question) => {
+                                                return <Table.Row>
+                                                    <Table.Cell>
+                                                        {question.question}
+                                                    </Table.Cell>
+                                                    <Table.Cell>
+                                                        {question.questionType}
+                                                    </Table.Cell>
+                                                    <Table.Cell>
+                                                        <Button icon>
+                                                            <Icon name='edit' />
+                                                        </Button>
+                                                        <Button icon>
+                                                            <Icon name='delete' />
+                                                        </Button>
+                                                    </Table.Cell>
+                                                </Table.Row>
+                                            })}
 
-                                                <Table.Cell>
-                                                    {createQuiz.question}
-                                                </Table.Cell>
-                                                <Table.Cell>
-                                                    {createQuiz.questionType}
-                                                </Table.Cell>
-                                                <Table.Cell>
-                                                    <Button icon>
-                                                        <Icon name='edit' />
-                                                    </Button>
-                                                    <Button icon>
-                                                        <Icon name='delete' />
-                                                    </Button>
-                                                </Table.Cell>
-                                            </Table.Row>
                                         </Table.Body>
                                     </Table>
 

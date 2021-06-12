@@ -12,8 +12,8 @@ const CreateQuestion = () => {
     const { createQuiz, changeQuizData, addQuestion } = useContext(GlobalQuestionStoreContext);
     const [question, setQuestion] = useState({
         question: '',
-        questionType:'',
-        totalPointperquestion:''
+        questionType: '',
+        totalPointperquestion: ''
     });
 
     const handleChange = (e) => {
