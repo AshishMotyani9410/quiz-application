@@ -23,11 +23,17 @@ const GlobalQuestionnStoreProvider = (props) => {
         ]})
     }
 
+    const addChoiceToQuestion = (choices) => {
+        console.log(createQuiz.questions)
+        createQuiz.questions[createQuiz.questions.length - 1].choices = [];
+        createQuiz.questions[createQuiz.questions.length - 1].choices.push(choices);
+    }
+
     useEffect(() => {
         console.log(createQuiz.questions)
     }, [createQuiz.questions])
 
-    return <GlobalQuestionStoreContext.Provider value={{ createQuiz, changeQuizData, addQuestion}}>
+    return <GlobalQuestionStoreContext.Provider value={{ createQuiz, changeQuizData, addQuestion, addChoiceToQuestion}}>
         {props.children}
     </GlobalQuestionStoreContext.Provider>
 }

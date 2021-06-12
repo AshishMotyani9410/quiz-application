@@ -7,7 +7,7 @@ import { useHistory } from 'react-router'
 
 const CreateChoice = () => {
     const history = useHistory();
-    const { createQuiz, changeQuizData } = useContext(GlobalQuestionStoreContext);
+    const { createQuiz, changeQuizData,  addChoiceToQuestion } = useContext(GlobalQuestionStoreContext);
     const [choice, setChoice] = useState();
     const [finalState, setFinalState] = useState([]);
 
@@ -15,7 +15,7 @@ const CreateChoice = () => {
 
     const handleChange = (e) => {
         setChoice({
-            [e.target.name]: [e.target.value]
+            [e.target.name]: e.target.value
         })
     }
 
@@ -68,7 +68,10 @@ const CreateChoice = () => {
                                     <Button.Group floated='right'>
                                         <Button floated='right' basic color='red'>Cancel</Button>
                                         <Button.Or />
-                                        <Button floated='right' positive onClick={() => history.push("/")}>Create</Button>
+                                        <Button floated='right' positive onClick={() => {
+                                            // history.push("/")
+                                            addChoiceToQuestion(finalState);
+                                        }}>Create</Button>
                                     </Button.Group>
                                 </div>
                             </Card.Content>
